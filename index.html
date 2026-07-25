@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Política de Privacidad — Himnario Adventista</title>
-    <meta name="description" content="Política de Privacidad para la aplicación móvil Himnario Adventista.">
-    
+    <meta name="description" content="Política de Privacidad para la aplicación móvil Himnario Adventista (iOS y Android).">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -27,11 +27,12 @@
             --text-light: #9ca3af;
             --bg-base: #f8fafc;
             --bg-card: #ffffff;
+            --bg-card-rgb: 255, 255, 255;
             --border-color: #e2e8f0;
             --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
             --shadow-md: 0 10px 25px -5px rgba(30, 58, 138, 0.05), 0 8px 10px -6px rgba(30, 58, 138, 0.05);
             --shadow-lg: 0 20px 25px -5px rgba(30, 58, 138, 0.08);
-            
+
             --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --border-radius: 16px;
         }
@@ -49,6 +50,7 @@
                 --text-light: #64748b;
                 --bg-base: #0f172a;
                 --bg-card: #1e293b;
+                --bg-card-rgb: 30, 41, 59;
                 --border-color: #334155;
                 --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.3);
                 --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.4);
@@ -92,7 +94,7 @@
         header {
             position: sticky;
             top: 0;
-            background: rgba(var(--bg-card), 0.8);
+            background: rgba(var(--bg-card-rgb), 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color);
@@ -103,7 +105,7 @@
         .header-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1.25rem 2rem;
+            padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -117,12 +119,13 @@
             color: var(--text-main);
             font-family: 'Outfit', sans-serif;
             font-weight: 700;
-            font-size: 1.25rem;
+            font-size: 1.15rem;
         }
 
         .brand-icon {
             width: 36px;
             height: 36px;
+            flex-shrink: 0;
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border-radius: 10px;
             display: flex;
@@ -139,25 +142,27 @@
         /* Hero / Cover Section */
         .hero {
             text-align: center;
-            padding: 5rem 2rem 3rem 2rem;
+            padding: 4rem 1.5rem 2.5rem 1.5rem;
             max-width: 800px;
             margin: 0 auto;
         }
 
         .hero h1 {
             font-family: 'Outfit', sans-serif;
-            font-size: 3rem;
+            font-size: clamp(1.9rem, 6vw, 3rem);
             font-weight: 800;
             line-height: 1.2;
             margin-bottom: 1rem;
+            padding-bottom: 0.15em;
             background: linear-gradient(135deg, var(--text-main) 30%, var(--primary-light));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -0.02em;
         }
 
         .hero .meta {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
             font-weight: 500;
             display: inline-flex;
@@ -173,7 +178,7 @@
         .main-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem 6rem 2rem;
+            padding: 0 1.5rem 5rem 1.5rem;
             display: grid;
             grid-template-columns: 280px 1fr;
             gap: 3.5rem;
@@ -184,6 +189,9 @@
             position: sticky;
             top: 100px;
             height: fit-content;
+            /* Grid items default to min-width:auto; without this the
+               non-wrapping TOC row blows the layout out sideways */
+            min-width: 0;
         }
 
         .toc-title {
@@ -215,7 +223,7 @@
             font-weight: 500;
             border-radius: 10px;
             transition: var(--transition-smooth);
-            border-left: 2px solid transparent;
+            border: 1px solid transparent;
         }
 
         .toc-link i {
@@ -225,15 +233,10 @@
             opacity: 0.7;
         }
 
-        .toc-link:hover {
-            color: var(--primary-light);
-            background: rgba(var(--primary-rgb), 0.04);
-        }
-
         .toc-link.active {
             color: var(--primary-light);
-            background: rgba(var(--primary-rgb), 0.06);
-            border-left-color: var(--primary-light);
+            background: rgba(var(--primary-rgb), 0.08);
+            border-color: rgba(var(--primary-rgb), 0.25);
             font-weight: 600;
         }
 
@@ -241,23 +244,18 @@
         .content-flow {
             display: flex;
             flex-direction: column;
-            gap: 2.5rem;
+            gap: 2rem;
+            min-width: 0;
         }
 
         .section-card {
             background-color: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: var(--border-radius);
-            padding: 2.5rem;
+            padding: 2.25rem;
             box-shadow: var(--shadow-md);
             transition: var(--transition-smooth);
             scroll-margin-top: 100px;
-        }
-
-        .section-card:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-2px);
-            border-color: rgba(var(--primary-rgb), 0.2);
         }
 
         .section-header {
@@ -272,6 +270,7 @@
         .section-icon {
             width: 44px;
             height: 44px;
+            flex-shrink: 0;
             background: rgba(var(--primary-rgb), 0.08);
             color: var(--primary-light);
             border-radius: 12px;
@@ -282,27 +281,27 @@
             transition: var(--transition-smooth);
         }
 
-        .section-card:hover .section-icon {
-            background: var(--primary-light);
-            color: #ffffff;
-            transform: rotate(-5deg) scale(1.05);
-        }
-
         .section-card h2 {
             font-family: 'Outfit', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--text-main);
+            line-height: 1.3;
         }
 
         .section-card p {
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: var(--text-muted);
             margin-bottom: 1rem;
+            overflow-wrap: break-word;
         }
 
         .section-card p:last-child {
             margin-bottom: 0;
+        }
+
+        .section-card strong {
+            color: var(--text-main);
         }
 
         /* Highlight List in Cards */
@@ -318,15 +317,54 @@
             display: flex;
             align-items: flex-start;
             gap: 0.85rem;
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: var(--text-muted);
-            padding: 0.5rem 0;
+            padding: 0.35rem 0;
+            overflow-wrap: break-word;
+            min-width: 0;
         }
 
         .section-card li i {
             margin-top: 0.35rem;
             font-size: 0.95rem;
+            flex-shrink: 0;
             color: var(--accent);
+        }
+
+        .section-card li span {
+            min-width: 0;
+        }
+
+        /* Hover effects only on devices that actually hover (mouse),
+           so touch screens don't get stuck "lifted" cards */
+        @media (hover: hover) {
+            .section-card:hover {
+                box-shadow: var(--shadow-lg);
+                transform: translateY(-2px);
+                border-color: rgba(var(--primary-rgb), 0.2);
+            }
+
+            .section-card:hover .section-icon {
+                background: var(--primary-light);
+                color: #ffffff;
+                transform: rotate(-5deg) scale(1.05);
+            }
+
+            .toc-link:hover {
+                color: var(--primary-light);
+                background: rgba(var(--primary-rgb), 0.04);
+            }
+
+            .copy-btn:hover {
+                border-color: var(--primary-light);
+                color: var(--primary-light);
+                transform: translateY(-1px);
+            }
+
+            .back-to-top:hover {
+                background-color: var(--primary);
+                transform: translateY(-3px) scale(1.05);
+            }
         }
 
         /* Interactive Contact Card Styling */
@@ -347,13 +385,17 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            min-width: 0;
         }
 
         .email-text {
             font-family: 'Outfit', sans-serif;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--text-main);
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            min-width: 0;
         }
 
         .copy-btn {
@@ -363,20 +405,16 @@
             padding: 0.6rem 1.2rem;
             font-size: 0.9rem;
             font-weight: 600;
+            font-family: inherit;
             border-radius: 8px;
             cursor: pointer;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             transition: var(--transition-smooth);
             position: relative;
             box-shadow: var(--shadow-sm);
-        }
-
-        .copy-btn:hover {
-            border-color: var(--primary-light);
-            color: var(--primary-light);
-            transform: translateY(-1px);
         }
 
         .copy-btn:active {
@@ -424,7 +462,7 @@
         footer {
             background-color: var(--bg-card);
             border-top: 1px solid var(--border-color);
-            padding: 3rem 2rem;
+            padding: 2.5rem 1.5rem;
             text-align: center;
             color: var(--text-light);
             font-size: 0.9rem;
@@ -438,8 +476,8 @@
         /* Back to top button */
         .back-to-top {
             position: fixed;
-            bottom: 2rem;
-            right: 2rem;
+            bottom: 1.5rem;
+            right: 1.5rem;
             width: 44px;
             height: 44px;
             border-radius: 50%;
@@ -463,22 +501,25 @@
             transform: translateY(0);
         }
 
-        .back-to-top:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px) scale(1.05);
-        }
-
         /* Responsive Breakpoints */
         @media (max-width: 1024px) {
             .main-container {
                 grid-template-columns: 1fr;
-                gap: 2.5rem;
+                gap: 2rem;
             }
 
             aside {
-                position: relative;
-                top: 0;
-                margin-bottom: 1rem;
+                position: sticky;
+                top: 68px;
+                z-index: 90;
+                background: var(--bg-base);
+                margin: 0 -1.5rem;
+                padding: 0.75rem 1.5rem 0 1.5rem;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .toc-title {
+                display: none;
             }
 
             .toc-menu {
@@ -486,29 +527,122 @@
                 overflow-x: auto;
                 padding-bottom: 0.75rem;
                 gap: 0.5rem;
-                scroll-snap-type: x mandatory;
+                scroll-snap-type: x proximity;
                 -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+
+            .toc-menu::-webkit-scrollbar {
+                display: none;
             }
 
             .toc-link {
                 white-space: nowrap;
                 scroll-snap-align: start;
-                padding: 0.6rem 1.1rem;
-                font-size: 0.9rem;
+                padding: 0.55rem 1rem;
+                font-size: 0.88rem;
+                background: var(--bg-card);
+                border: 1px solid var(--border-color);
+                border-radius: 100px;
+                flex-shrink: 0;
+            }
+
+            .toc-link.active {
+                background: rgba(var(--primary-rgb), 0.1);
+                border-color: rgba(var(--primary-rgb), 0.35);
             }
         }
 
         @media (max-width: 768px) {
-            .hero {
-                padding: 3rem 1rem 2rem 1rem;
+            .header-container {
+                padding: 0.85rem 1.25rem;
             }
 
-            .hero h1 {
-                font-size: 2.25rem;
+            .brand {
+                font-size: 1.05rem;
+            }
+
+            .brand-icon {
+                width: 32px;
+                height: 32px;
+                border-radius: 9px;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                padding: 2.5rem 1.25rem 1.75rem 1.25rem;
+            }
+
+            .hero .meta {
+                font-size: 0.82rem;
+                padding: 0.45rem 1rem;
+            }
+
+            .main-container {
+                padding: 0 1.25rem 4rem 1.25rem;
+            }
+
+            aside {
+                top: 60px;
+                margin: 0 -1.25rem;
+                padding: 0.75rem 1.25rem 0 1.25rem;
             }
 
             .section-card {
-                padding: 1.75rem;
+                padding: 1.5rem;
+                border-radius: 14px;
+                scroll-margin-top: 130px;
+            }
+
+            .section-header {
+                gap: 0.85rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .section-icon {
+                width: 38px;
+                height: 38px;
+                border-radius: 10px;
+                font-size: 1.05rem;
+            }
+
+            .section-card h2 {
+                font-size: 1.2rem;
+            }
+
+            .section-card p,
+            .section-card li {
+                font-size: 0.95rem;
+            }
+
+            /* Stack the contact box vertically on phones */
+            .contact-box {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 1.25rem;
+                gap: 1rem;
+            }
+
+            .copy-btn {
+                width: 100%;
+                padding: 0.75rem 1.2rem;
+            }
+
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                bottom: 1.25rem;
+                right: 1.25rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .section-card {
+                padding: 1.25rem;
+            }
+
+            .content-flow {
+                gap: 1.5rem;
             }
         }
     </style>
@@ -534,7 +668,7 @@
         <h1>Política de Privacidad</h1>
         <div class="meta">
             <i class="fa-regular fa-calendar-check"></i>
-            Última actualización: May 17, 2026
+            Última actualización: 24 de julio de 2026
         </div>
     </div>
 
@@ -566,7 +700,7 @@
                     </div>
                     <h2>1. Introducción</h2>
                 </div>
-                <p>En <strong>Himnario Adventista</strong>, nos tomamos muy en serio la confianza que deposita en nosotros al utilizar nuestra aplicación. Esta Política de Privacidad tiene como objetivo detallar qué datos tratamos, cómo los protegemos y el absoluto compromiso de confidencialidad que mantenemos con usted.</p>
+                <p>En <strong>Himnario Adventista</strong>, nos tomamos muy en serio la confianza que deposita en nosotros al utilizar nuestra aplicación, disponible para dispositivos <strong>iOS (App Store) y Android (Google Play)</strong>. Esta Política de Privacidad detalla qué datos tratamos, cómo los protegemos y el compromiso de confidencialidad que mantenemos con usted en ambas plataformas.</p>
                 <p>Nuestra premisa fundamental es: <strong>minimizamos al máximo la recolección de información personal</strong> para brindarle una experiencia espiritual tranquila y privada.</p>
             </section>
 
@@ -578,19 +712,19 @@
                     </div>
                     <h2>2. Información que Recopilamos</h2>
                 </div>
-                <p>Diferenciamos la información según el uso que realiza dentro de la plataforma:</p>
+                <p>Diferenciamos la información según el uso que realiza dentro de la aplicación:</p>
                 <ul>
                     <li>
                         <i class="fa-solid fa-circle-check"></i>
-                        <span><strong>Datos Locales (Preferencias, Favoritos y Playlists)</strong>: La aplicación le permite marcar himnos favoritos y crear listas de reproducción. Esta información se almacena localmente en la memoria persistente de su dispositivo (mediante SwiftUI local storage) y <strong>nunca</strong> es subida o almacenada en nuestros servidores.</span>
+                        <span><strong>Datos Locales (Preferencias, Favoritos y Playlists)</strong>: La aplicación le permite marcar himnos favoritos, crear listas de reproducción y ajustar preferencias como el tema y el tamaño de letra. Esta información se almacena únicamente en la memoria local de su dispositivo y <strong>nunca</strong> es subida ni almacenada en nuestros servidores.</span>
                     </li>
                     <li>
                         <i class="fa-solid fa-circle-check"></i>
-                        <span><strong>Datos del Chat Bíblico con IA</strong>: Al utilizar nuestra función Premium de chat con Inteligencia Artificial, los mensajes de texto que envía se transmiten de forma totalmente cifrada (HTTPS) a nuestro servidor/Cloudflare Worker intermediario con el fin único de generar y procesar las respuestas con la API de IA. Estas conversaciones no se asocian con perfiles personales ni se usan para publicidad.</span>
+                        <span><strong>Datos del Chat Bíblico con IA</strong>: Al utilizar nuestra función Premium de chat con Inteligencia Artificial, los mensajes de texto que envía se transmiten de forma cifrada (HTTPS) a nuestro servidor intermediario con el fin único de generar la respuesta mediante un proveedor de IA. Estas conversaciones no se asocian con perfiles personales, no se utilizan para publicidad y su historial de conversaciones se guarda únicamente en su dispositivo.</span>
                     </li>
                     <li>
                         <i class="fa-solid fa-circle-check"></i>
-                        <span><strong>Datos de Pago e In-App Purchases</strong>: Toda transacción, compra de planes de suscripción mensual o anual se gestiona de manera directa y cifrada a través de la App Store de Apple (StoreKit). No almacenamos, accedemos ni procesamos información financiera como números de tarjetas de crédito o datos de facturación.</span>
+                        <span><strong>Datos de Pago y Suscripciones</strong>: Toda compra de planes de suscripción mensual o anual se gestiona de manera directa y cifrada a través de la <strong>App Store de Apple (StoreKit) en iOS</strong> o de <strong>Google Play (Play Billing) en Android</strong>. No almacenamos, accedemos ni procesamos información financiera como números de tarjetas de crédito o datos de facturación.</span>
                     </li>
                 </ul>
             </section>
@@ -607,7 +741,7 @@
                 <ul>
                     <li>
                         <i class="fa-solid fa-circle-check"></i>
-                        <span>Garantizar el correcto funcionamiento de las funciones avanzadas como el buscador interactivo y el reproductor de audio de himnos.</span>
+                        <span>Garantizar el correcto funcionamiento de las funciones de la aplicación, como el buscador de himnos y el reproductor de audio (canto y pista).</span>
                     </li>
                     <li>
                         <i class="fa-solid fa-circle-check"></i>
@@ -615,7 +749,7 @@
                     </li>
                     <li>
                         <i class="fa-solid fa-circle-check"></i>
-                        <span>Validar la autenticidad del estado de su suscripción Premium a través de los servidores oficiales de verificación de Apple.</span>
+                        <span>Validar la autenticidad de su suscripción Premium a través de los servidores oficiales de Apple o de Google Play, según la plataforma que utilice.</span>
                     </li>
                 </ul>
             </section>
@@ -628,9 +762,9 @@
                     </div>
                     <h2>4. Almacenamiento y Seguridad</h2>
                 </div>
-                <p>Aplicamos medidas técnicas avanzadas para salvaguardar cualquier interacción:</p>
-                <p>Toda comunicación entre la aplicación móvil y nuestras funciones de backend (como el Chat Bíblico) se realiza mediante canales cifrados usando protocolos <strong>TLS/HTTPS de última generación</strong>.</p>
-                <p>Además, al no requerir que cree un usuario o contraseña para usar el himnario básico, el riesgo de filtraciones de contraseñas de cuentas personales es inexistente.</p>
+                <p>Aplicamos medidas técnicas para salvaguardar cualquier interacción:</p>
+                <p>Toda comunicación entre la aplicación móvil y nuestros servicios de backend (como el Chat Bíblico) se realiza mediante canales cifrados usando protocolos <strong>TLS/HTTPS</strong>.</p>
+                <p>Además, la aplicación no requiere crear un usuario ni contraseña, por lo que el riesgo de filtración de credenciales de cuentas personales es inexistente.</p>
             </section>
 
             <!-- Section 5 -->
@@ -653,15 +787,27 @@
                     </div>
                     <h2>6. Proveedores y Servicios de Terceros</h2>
                 </div>
-                <p>Para hacer viables ciertas características técnicas complejas de la aplicación, interactuamos con socios confiables que cumplen altos estándares de privacidad:</p>
+                <p>Para hacer posibles ciertas funciones de la aplicación, interactuamos con proveedores confiables. Como en cualquier conexión a Internet, estos servicios pueden ver datos técnicos básicos de la conexión (como la dirección IP) necesarios para responder a la solicitud:</p>
                 <ul>
                     <li>
                         <i class="fa-solid fa-circle-check"></i>
-                        <span><strong>Apple Inc. (App Store / StoreKit)</strong>: Encargado exclusivo de procesar la autenticación de suscripciones, pagos, facturación e historial de compras.</span>
+                        <span><strong>Apple Inc. (App Store / StoreKit)</strong>: En iOS, encargado exclusivo de procesar pagos, suscripciones, facturación e historial de compras.</span>
                     </li>
                     <li>
                         <i class="fa-solid fa-circle-check"></i>
-                        <span><strong>API de Inteligencia Artificial (OpenAI / Gemini)</strong>: Las consultas del Chat Bíblico se procesan a través de APIs empresariales seguras que poseen cláusulas de no-entrenamiento, es decir, sus mensajes no son utilizados para entrenar modelos de lenguaje públicos.</span>
+                        <span><strong>Google (Google Play / Play Billing)</strong>: En Android, encargado exclusivo de procesar pagos, suscripciones, facturación e historial de compras.</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span><strong>Cloudflare y Fireworks AI (Chat Bíblico)</strong>: Las consultas del Chat Bíblico pasan por nuestro servidor intermediario alojado en Cloudflare y se procesan mediante la API de Fireworks AI con el único fin de generar la respuesta. No se utilizan para crear perfiles publicitarios.</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span><strong>Audius (audio de los himnos)</strong>: Al reproducir el canto o la pista de un himno, la aplicación transmite el audio desde la plataforma pública de streaming Audius.</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span><strong>GitHub (banners promocionales)</strong>: La aplicación puede descargar ocasionalmente un banner informativo alojado en GitHub que promociona otras aplicaciones nuestras. No se envían datos personales ni se muestra publicidad basada en intereses.</span>
                     </li>
                 </ul>
             </section>
@@ -674,7 +820,7 @@
                     </div>
                     <h2>7. Privacidad Infantil</h2>
                 </div>
-                <p>Nuestra aplicación es apta y diseñada para toda la familia con el fin de edificar en la adoración cristiana. No recopilamos conscientemente ningún tipo de información de identificación personal de niños menores de 13 años de edad.</p>
+                <p>Nuestra aplicación es apta para toda la familia con el fin de edificar en la adoración cristiana; sin embargo, no está dirigida a menores de 13 años. No recopilamos conscientemente ningún tipo de información de identificación personal de niños menores de 13 años de edad.</p>
                 <p>Si es padre o tutor y tiene conocimiento de que su hijo nos ha transmitido datos de forma indebida, le instamos a contactarnos de inmediato para proceder con su completa eliminación.</p>
             </section>
 
@@ -687,7 +833,7 @@
                     <h2>8. Sus Derechos de Privacidad</h2>
                 </div>
                 <p>De acuerdo con regulaciones como el RGPD (Europa) y normativas de privacidad regionales, usted goza del pleno control sobre su información:</p>
-                <p>Tiene el derecho a eliminar todo su historial de Playlists y Favoritos directamente limpiando el caché de la aplicación en los ajustes de su sistema operativo iOS o reinstalando la app, dado que dicha información solo reside en su dispositivo local.</p>
+                <p>Dado que sus Playlists, Favoritos, preferencias e historial de chat residen únicamente en su dispositivo, puede eliminarlos en cualquier momento borrando los datos de la aplicación desde los ajustes de su dispositivo (iOS o Android) o reinstalando la aplicación.</p>
             </section>
 
             <!-- Section 9 -->
@@ -699,7 +845,7 @@
                     <h2>9. Contacto y Consultas</h2>
                 </div>
                 <p>Si desea obtener aclaraciones o tiene dudas adicionales respecto a cómo tratamos la privacidad en el Himnario Adventista, puede ponerse en contacto con nosotros directamente:</p>
-                
+
                 <div class="contact-box">
                     <div class="contact-info">
                         <div class="section-icon" style="width: 36px; height: 36px; font-size: 1rem; background: rgba(245,158,11,0.15); color: var(--accent);">
@@ -733,32 +879,40 @@
         // Smooth Active Navigation link highlights on Scroll
         const sections = document.querySelectorAll('.section-card');
         const navLinks = document.querySelectorAll('.toc-link');
+        const backToTopBtn = document.getElementById('btn-back-to-top');
+        const mobileToc = window.matchMedia('(max-width: 1024px)');
 
         window.addEventListener('scroll', () => {
             let current = '';
             sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= (sectionTop - 150)) {
+                if (window.scrollY >= (section.offsetTop - 180)) {
                     current = section.getAttribute('id');
                 }
             });
 
+            let activeLink = null;
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
+                if (current && link.getAttribute('href') === '#' + current) {
                     link.classList.add('active');
+                    activeLink = link;
                 }
             });
 
+            // Keep the active pill in view inside the horizontal TOC on mobile
+            if (activeLink && mobileToc.matches) {
+                const menu = activeLink.closest('.toc-menu');
+                const target = activeLink.offsetLeft - (menu.clientWidth - activeLink.offsetWidth) / 2;
+                menu.scrollTo({ left: target, behavior: 'smooth' });
+            }
+
             // Back to top visibility
-            const backToTopBtn = document.getElementById('btn-back-to-top');
             if (window.scrollY > 400) {
                 backToTopBtn.classList.add('visible');
             } else {
                 backToTopBtn.classList.remove('visible');
             }
-        });
+        }, { passive: true });
 
         // Copy Email to Clipboard with Tooltip Animation
         function copyEmail() {
@@ -766,14 +920,14 @@
             const btn = document.querySelector('.copy-btn');
             const btnIcon = btn.querySelector('i');
             const btnText = document.getElementById('btn-text');
-            
+
             navigator.clipboard.writeText(email).then(() => {
                 // Trigger tooltip
                 btn.classList.add('show-tooltip');
                 btnIcon.className = 'fa-solid fa-check';
                 btnIcon.style.color = '#10b981';
                 btnText.textContent = '¡Copiado!';
-                
+
                 setTimeout(() => {
                     btn.classList.remove('show-tooltip');
                 }, 2000);
